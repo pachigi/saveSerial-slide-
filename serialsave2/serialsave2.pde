@@ -51,7 +51,7 @@ void serialEvent(Serial port) {
   print(inputData+"->");
   Idata.add(str(inputData));
 
-  if (inputData==1) {
+  if (inputData==0) {
 
 
     if ( recorder.isRecording() ) {

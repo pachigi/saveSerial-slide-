@@ -13,17 +13,19 @@ void loop(){
 
 
   int swipe=analogRead(0);
-
-  analogWrite(9,swipe/4); 
+  int sendData=swipe/4;
+  if(sendData==255){
+    sendData=254;
+  }
+  analogWrite(9,sendData+1); 
 
   if(sw==HIGH&&last_sw==LOW){
-    Serial.write(1);
+    Serial.write(0);
     serialWrite=!serialWrite;
   }
 
   if(serialWrite){
-    Serial.write(swipe/4);
-    
+    Serial.write(sendData+1);
   }
 
   byte data=0;
@@ -37,6 +39,7 @@ void loop(){
   last_sw=sw;
   delay(100);
 }
+
 
 
 
